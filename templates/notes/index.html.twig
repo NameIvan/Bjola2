@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Notes{% endblock %}
+
+{% block stylesheets %}
+    <link href="{{ asset('asset/css/notes.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+    <div class="container notes-block">
+        <div class="notes-block-btn">
+            <a href="{{ path('create_note') }}" class="btn btn-success">Create</a>
+        </div>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for note in notes %}
+                    <tr>
+                        <th scope="row">{{ note.id }}</th>
+                        <td>{{ note.title }}</td>
+                        <td>{{ note.description }}</td>
+                        <td>{{ note.status ? 'Active' : 'Inactive' }}</td>
+                        <td>
+                            <a href="{{ path('edit_note', {'note': note.id}) }}" class="btn btn-warning">Edit</a>
+                            <a href="{{ path('remove_note', {'note': note.id}) }}" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

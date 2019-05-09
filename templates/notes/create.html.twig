@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create Note{% endblock %}
+
+{% block stylesheets %}
+    <link href="{{ asset('asset/css/notes.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+    <div class="container notes-block">
+        {{ include('notes/include/form.html.twig', { 'form': form }) }}
+    </div>
+{% endblock %}
